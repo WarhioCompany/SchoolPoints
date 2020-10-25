@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "559889898231",
+    "firebase_url": "https://schoolpoints-90de9.firebaseio.com",
+    "project_id": "schoolpoints-90de9",
+    "storage_bucket": "schoolpoints-90de9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559889898231:android:05f1e5fa8c8fd7464891f2",
+        "android_client_info": {
+          "package_name": "com.Warhio.SchoolPoints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559889898231-et2bapkifco3304p1t7msauea3b6mho3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Warhio.SchoolPoints",
+            "certificate_hash": "e5bb4c75494968dd830057be50f6a2e8df5533f2"
+          }
+        },
+        {
+          "client_id": "559889898231-gdbscjdkrpaf61amog18fvfpdjp5ntkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkh_7-YWA8l5tbTvVL5kIQwHarWQ-EYOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559889898231-gdbscjdkrpaf61amog18fvfpdjp5ntkj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "559889898231-g99bq5ip7hhgcuj9ufsur45h6v43gbqm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Warhio.SchoolPoints"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
