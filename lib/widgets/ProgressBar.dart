@@ -31,7 +31,7 @@ class _ProgressBarState extends State<ProgressBar> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: height / 4, left: width / 2),
+          padding: EdgeInsets.only(top: height / 4, left: width / 2.2),
           child: Text(
             (value * 100).toString() + "%",
           ),

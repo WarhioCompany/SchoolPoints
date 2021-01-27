@@ -19,14 +19,14 @@ class MainPage extends StatefulWidget {
 IHateDartForThis usersMainPage = new IHateDartForThis(new List<myUser>());
 
 class _MainPageState extends State<MainPage> {
-  final myUser iAm;
+  myUser iAm;
   double userPointsFromSummary;
   _MainPageState(this.users, this.iAm) {
     initUsers();
   }
 
   // return CircularProgressIndicator();
-  initUsers() {
+  void initUsers() {
     FirebaseDatabase.instance.reference().child('Users').once().then((onValue) {
       List data = onValue.value;
       int length = 0;
@@ -40,13 +40,9 @@ class _MainPageState extends State<MainPage> {
       for (int i = 0; i < length; i++) {
         setState(() {
           users.users.add(myUser.fromJson(data[i], i));
-          pointSummary += int.parse(data[i]['Points']);
+          pointSummary += users.users[i].points;
           if (i == iAm.id) {
-            iAm.login = data[i]['Login'];
-            iAm.password = data[i]['Pass'];
-            iAm.email = data[i]['Email'];
-            iAm.color = int.parse(data[i]['Color'].toString());
-            iAm.points = int.parse(data[i]['Points']);
+            iAm = myUser.fromJson(data[i], i);
           }
         });
       }
@@ -193,7 +189,7 @@ class _MainPageState extends State<MainPage> {
                             ],
                           ),
                           Column(
-                            children: [
+                            children: <Widget>[
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
                               ),
@@ -202,7 +198,7 @@ class _MainPageState extends State<MainPage> {
                                 width: MediaQuery.of(context).size.width * 0.3,
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),

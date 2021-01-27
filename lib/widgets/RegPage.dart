@@ -34,11 +34,6 @@ class _RegPageState extends State<RegPage> {
 
     Size size = MediaQuery.of(context).size;
 
-    List<bool> all = new List<bool>();
-
-    for (int i = 0; i < 6; i++) {
-      all.add(false);
-    }
     double width = MediaQuery.of(context).size.width * 0.25;
 
     return Scaffold(
@@ -140,120 +135,7 @@ class _RegPageState extends State<RegPage> {
                     //fillColor: Colors.green
                   ),
                 )),
-            Row(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/orangecar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.orange,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/bluecar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.blue,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/blue-greencar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.bluegreen,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/greencar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.green,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/pinkcar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.pink,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/yellowcar.png',
-                      width: width,
-                    ),
-                    Radio(
-                      value: CarEnum.yellow,
-                      groupValue: group,
-                      onChanged: (CarEnum v) {
-                        setState(() {
-                          group = v;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+
             //Кнопка
             Container(
               height: size.height * 0.07,
@@ -278,30 +160,42 @@ class _RegPageState extends State<RegPage> {
                   //Alert
 
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Column(
-                        children: <Widget>[
-                          Text("Пароли не совпадают!"),
-                        ],
-                      );
-                    },
-                  );
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Пароли не совпадают!"),
+                          content: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.red),
+                            ),
+                            color: Colors.white,
+                            child: Text('Ок'),
+                            onPressed: () => Navigator.of(context).pop(false),
+                          ),
+                        );
+                      });
                 } else if (!RegExp(
                         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                     .hasMatch(e)) {
                   //Alert
                   print("Почта не валидна");
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Column(
-                        children: <Widget>[
-                          Text("Эта почта не валидна!"),
-                        ],
-                      );
-                    },
-                  );
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Почта не валидна!"),
+                          content: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.red),
+                            ),
+                            color: Colors.white,
+                            child: Text('Ок'),
+                            onPressed: () => Navigator.of(context).pop(false),
+                          ),
+                        );
+                      });
                 } else {
                   //Add
                   print("УРАРАРАА ОТЛАДКААА");
@@ -327,7 +221,7 @@ class _RegPageState extends State<RegPage> {
                       myUser m = myUser.fromJson(data[i], i);
                       print(m.login.toString());
                       print(m.login + " == " + l);
-                      print(m.email + " == ".toString() + e);
+                      print(m.email + " == " + e);
                       if (m.login.toLowerCase() == l.toLowerCase()) {
                         loginWas = true;
                         break;
@@ -341,31 +235,67 @@ class _RegPageState extends State<RegPage> {
                     if (loginWas) {
                       print("Этот логин ранее был использован");
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Column(
-                            children: <Widget>[
-                              Text("Этот логин ранее был использован!"),
-                            ],
-                          );
-                        },
-                      );
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Этот логин ранее был использован!"),
+                              content: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.red),
+                                ),
+                                color: Colors.white,
+                                child: Text('Ок'),
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                              ),
+                            );
+                          });
+                    } else if (login.text.length > 12) {
+                      print(
+                          "Этот логин больше 12 символов (В случае ошибки к Захарову идите) ");
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                  "Этот логин больше 12 символов (В случае ошибки к Захарову идите) !"),
+                              content: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.red),
+                                ),
+                                color: Colors.white,
+                                child: Text('Ок'),
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                              ),
+                            );
+                          });
                     } else if (emailWas) {
                       print("Эта почта ранее была использована");
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Column(
-                            children: <Widget>[
-                              Text("Эта почта ранее была использована!"),
-                            ],
-                          );
-                        },
-                      );
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Эта почта ранее была использована!"),
+                              content: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.red),
+                                ),
+                                color: Colors.white,
+                                child: Text('Ок'),
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                              ),
+                            );
+                          });
                     } else {
                       ref.child('Users').child((length).toString()).set({
                         'Login': l,
                         'Pass': p,
+                        'Admin': 'false',
                         'Email': e,
                         'Color': group.index,
                         'Points': '0'

@@ -49,40 +49,11 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text("Профиль"),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            child: Container(
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
-              child: Center(child: Text(iAm.login)),
-              height: MediaQuery.of(context).size.width * 0.2,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: circleColor, width: 1)),
-            ),
-            padding: EdgeInsets.only(top: 20),
-          ),
-          Padding(
-            child: FlatButton(
-              child: Image.asset(
-                pathToMyImage,
-                width: MediaQuery.of(context).size.width * 0.4,
-              ),
-              onPressed: () {},
-            ),
-            padding: EdgeInsets.only(top: 50),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: ProgressBar(
-              0.5,
-              MediaQuery.of(context).size.width * 0.5,
-              MediaQuery.of(context).size.height * 0.05,
-              Colors.amber,
-            ),
-          )
-        ],
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          children: <Widget>[],
+        ),
       ),
     );
   }
